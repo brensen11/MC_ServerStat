@@ -3,7 +3,8 @@ import time
 from mcstatus import JavaServer
 players = []  # List of players online, starts empty!
 JAKES_URL = "play.jacobknowlton.com:25565"
-DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1176359011285737513/LVjlY30UW4MSWUWgSFgGJUQBfHkMjQB9Tyt6njUuxKJMpMn_EivMF7Z5s4urZ2xp_lvi"  # test server
+TEST_WEBHOOK = "https://discord.com/api/webhooks/1176359011285737513/LVjlY30UW4MSWUWgSFgGJUQBfHkMjQB9Tyt6njUuxKJMpMn_EivMF7Z5s4urZ2xp_lvi"  # test server
+DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1176940980826538026/P1CbadrfPiKp8hCneN_t8H7GOro3cvtLpz9KJJTKj73YbmEVZK1fLYKMynfsQ7oNfWmz"
 
 
 def update_players(server: JavaServer):
