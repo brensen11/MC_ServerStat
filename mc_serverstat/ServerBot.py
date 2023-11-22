@@ -10,7 +10,6 @@ def update_players(server: JavaServer):
     global players
     curr_players_sample = server.status().players.sample
     curr_players_sample = curr_players_sample if curr_players_sample is not None else []  # sample can be None
-    print(f"Poll Results: {curr_players_sample}")
     for p in curr_players_sample:
         if p in players:  # nothing happens, they are still online
             players.remove(p)
