@@ -1,11 +1,10 @@
 import requests
 import time
+import sys
 from mcstatus import JavaServer
 players = []  # List of players online, starts empty!
-JAKES_URL = "play.jacobknowlton.com:25565"
-TEST_WEBHOOK = "https://discord.com/api/webhooks/1176359011285737513/LVjlY30UW4MSWUWgSFgGJUQBfHkMjQB9Tyt6njUuxKJMpMn_EivMF7Z5s4urZ2xp_lvi"  # test server
-DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1176940980826538026/P1CbadrfPiKp8hCneN_t8H7GOro3cvtLpz9KJJTKj73YbmEVZK1fLYKMynfsQ7oNfWmz"
-
+MC_URL = ""
+DISCORD_WEBHOOK = ""
 
 def update_players(server: JavaServer):
     global players
@@ -15,10 +14,14 @@ def update_players(server: JavaServer):
         if p in players:  # nothing happens, they are still online
             players.remove(p)
         else:  # player p joined!
-            msg_server(f"{p.name} joined")
+            msg = f"{p.name} joined"
+            msg_server(msg)
+            print(msg)
     # what's left in players, left!
     for p in players:
-        msg_server(f"{p.name} left")
+        msg = f"{p.name} left"
+        msg_server(msg)
+        print(msg)
     # swap players to be new_players
     players = curr_players_sample
 
@@ -28,11 +31,22 @@ def msg_server(msg):
 
 
 def run():
-    server = JavaServer.lookup(JAKES_URL)
-    # update_players(server)
+    server = JavaServer.lookup(MC_URL)
+    print("Server is Running...")
     while True:
         update_players(server)
         time.sleep(5)
 
 
-run()
+def main():
+    if len(sys.argv) != 3:
+        print("Must run in format ServerBot.py MINECRAFT_URL DISCORD_WEBHOOK")
+        return
+    global MC_URL
+    global DISCORD_WEBHOOK
+    MC_URL = sys.argv[1]
+    DISCORD_WEBHOOK = sys.argv[2]
+    run()
+
+
+main()
