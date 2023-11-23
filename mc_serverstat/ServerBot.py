@@ -44,7 +44,7 @@ def run():
 
 
 def main():
-    if 3 <= len(sys.argv) <= 4:
+    if not (3 <= len(sys.argv) <= 4):
         print("Must run in format ServerBot.py MINECRAFT_URL DISCORD_WEBHOOK")
         return
     global MC_URL
