@@ -44,7 +44,7 @@ def run():
     print("Server is Running...", flush=True)
     while True:
         update_players(server)
-        time.sleep(5)
+        time.sleep(45)
 
 
 def main():
